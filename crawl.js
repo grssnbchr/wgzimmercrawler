@@ -108,7 +108,6 @@ var callUri = function() {
                             subject: 'WGZimmer-Daemon - Vom ' + object.from + ' an frei in "' + object.location + '" für ' + object.cost,
                             text: object.link
                         }, function(err, result) {
-                            console.log(result);
                             if (err !== null) {
                                 console.log(err);
                             } else {

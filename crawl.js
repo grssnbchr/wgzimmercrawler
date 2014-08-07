@@ -100,8 +100,8 @@ var callUri = function() {
                     }
                     // check if object is already contained in list array
                     if (_.findWhere(list, object) === undefined) {
-                        console.log(object);
                         // if not, send email and add object to list
+                        console.log(process.env.CRAWLER_MAIL);
                         transporter.sendMail({
                             from: process.env.CRAWLER_MAIL,
                             to: emailReceiver,

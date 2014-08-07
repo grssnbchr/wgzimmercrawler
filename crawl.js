@@ -102,6 +102,7 @@ var callUri = function() {
                     if (_.findWhere(list, object) === undefined) {
                         // if not, send email and add object to list
                         console.log(process.env.CRAWLER_MAIL);
+                        console.log(emailReceiver);
                         transporter.sendMail({
                             from: process.env.CRAWLER_MAIL,
                             to: emailReceiver,

@@ -1,1 +1,1 @@
-web: node crawl.js
+worker: node crawl.js

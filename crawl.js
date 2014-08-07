@@ -32,8 +32,8 @@ var list = JSON.parse(fs.readFileSync('flats.json', {
 // read list from file
 
 var interval = 10; // in minutes
-var numberToFetch = 8; // number of entries to fetch
-var minimalFromDate = '14.9.2011'; // move date before which entries are discarded
+var numberToFetch = 100; // number of entries to fetch
+var minimalFromDate = '14.9.2014'; // move date before which entries are discarded
 var emailReceiver = process.env.CRAWLER_RCVR_MAIL;
 var callUri = function() {
     console.log("Starting fetch...");

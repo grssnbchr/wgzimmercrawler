@@ -101,14 +101,14 @@ var callUri = function() {
                     // check if object is already contained in list array
                     if (_.findWhere(list, object) === undefined) {
                         // if not, send email and add object to list
-                        console.log(process.env.CRAWLER_MAIL);
-                        console.log(emailReceiver);
+
                         transporter.sendMail({
                             from: process.env.CRAWLER_MAIL,
                             to: emailReceiver,
                             subject: 'WGZimmer-Daemon - Vom ' + object.from + ' an frei in "' + object.location + '" für ' + object.cost,
                             text: object.link
                         }, function(err, result) {
+                            console.log(result);
                             if (err !== null) {
                                 console.log(err);
                             } else {

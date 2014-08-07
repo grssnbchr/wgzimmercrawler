@@ -43,7 +43,7 @@ var callUri = function() {
         'timeout': 10000,
         'form': 'query=&priceMin=500&priceMax=1500&state=zurich-stadt&student=none&country=ch&orderBy=MetaData%2F%40mgnl%3Alastmodified&orderDir=descending&startSearchMate=true&wgStartSearch=true',
         'callback': function(error, result, $) {
-            if(error !== null){
+            if (error !== null) {
                 console.log(error);
                 return;
             }
@@ -101,7 +101,6 @@ var callUri = function() {
                     // check if object is already contained in list array
                     if (_.findWhere(list, object) === undefined) {
                         // if not, send email and add object to list
-                        list.push(object);
                         transporter.sendMail({
                             from: process.env.CRAWLER_MAIL,
                             to: emailReceiver,
@@ -110,6 +109,8 @@ var callUri = function() {
                         }, function(err, result) {
                             if (err !== null) {
                                 console.log(err);
+                            } else {
+                                list.push(object);
                             }
                         });
                     }

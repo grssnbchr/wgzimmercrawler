@@ -11,7 +11,7 @@ var c = new Crawler({
 });
 // define an Email transporter
 var transporter = Email.createTransport({
-    service: 'yahoo',
+    service: 'Gmail',
     auth: {
         user: process.env.CRAWLER_MAIL,
         pass: process.env.CRAWLER_PWD

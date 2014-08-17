@@ -41,6 +41,8 @@ var minimalFromDate = '20.9.2014'; // move date before which entries are discard
 var emailReceiver = process.env.CRAWLER_RCVR_MAIL;
 var i = 0;
 var onMailSendComplete = function(err) {
+    // reset i
+    i = 0;
     if (err) {
         console.log(err);
     } else {

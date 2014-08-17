@@ -12,7 +12,10 @@ var c = new Crawler({
 });
 // define an Email transporter
 var transporter = Email.createTransport({
-    service: 'yahoo',
+    // service: 'yahoo',
+    host: 'smtp.geo.uzh.ch',
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.CRAWLER_MAIL,
         pass: process.env.CRAWLER_PWD
@@ -33,7 +36,7 @@ var list = JSON.parse(fs.readFileSync('flats.json', {
 // read list from file
 
 var interval = 10; // in minutes
-var numberToFetch = 200; // number of entries to fetch
+var numberToFetch = 20; // number of entries to fetch
 var minimalFromDate = '20.9.2014'; // move date before which entries are discarded
 var emailReceiver = process.env.CRAWLER_RCVR_MAIL;
 var i = 0;
@@ -105,14 +108,13 @@ var sendMail = function($, element, callback) {
         if (_.findWhere(list, object) === undefined) {
             // if not, send email and add object to list
             transporter.sendMail({
-                from: process.env.CRAWLER_MAIL,
+                from: emailReceiver,
                 to: emailReceiver,
                 subject: 'WGZimmer-Daemon - ' + object.created + ' Vom ' + object.from + ' an frei in "' + object.location + '" für ' + object.cost,
                 text: object.link
             }, function(err, result) {
-                console.log(result.response);
                 if (err !== null) {
-                    console.log('mail sending failed: ' + err.response);
+                    console.log('mail sending failed: ' + err);
                 } else {
                     console.log('mail sent');
                     list.push(object);

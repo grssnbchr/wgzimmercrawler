@@ -34,7 +34,7 @@ var list = JSON.parse(fs.readFileSync('flats.json', {
 
 var interval = 10; // in minutes
 var numberToFetch = 100; // number of entries to fetch
-var minimalFromDate = '14.9.2014'; // move date before which entries are discarded
+var minimalFromDate = '20.9.2014'; // move date before which entries are discarded
 var emailReceiver = process.env.CRAWLER_RCVR_MAIL;
 var i = 0;
 var onMailSendComplete = function(err) {
@@ -50,7 +50,6 @@ var onMailSendComplete = function(err) {
             }
         });
     }
-    console.log('îdling.....');
 }
 var sendMail = function($, element, callback) {
     if (i++ < numberToFetch) {
@@ -108,10 +107,9 @@ var sendMail = function($, element, callback) {
             transporter.sendMail({
                 from: process.env.CRAWLER_MAIL,
                 to: emailReceiver,
-                subject: 'WGZimmer-Daemon - Vom ' + object.from + ' an frei in "' + object.location + '" für ' + object.cost,
+                subject: 'WGZimmer-Daemon - ' + object.created + ' Vom ' + object.from + ' an frei in "' + object.location + '" für ' + object.cost,
                 text: object.link
             }, function(err, result) {
-                console.log(result.response);
                 if (err !== null) {
                     console.log('mail sending failed: ' + err.response);
                 } else {

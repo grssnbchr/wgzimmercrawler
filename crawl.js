@@ -110,6 +110,7 @@ var sendMail = function($, element, callback) {
                 subject: 'WGZimmer-Daemon - ' + object.created + ' Vom ' + object.from + ' an frei in "' + object.location + '" für ' + object.cost,
                 text: object.link
             }, function(err, result) {
+                console.log(result.response);
                 if (err !== null) {
                     console.log('mail sending failed: ' + err.response);
                 } else {

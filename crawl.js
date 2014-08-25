@@ -138,7 +138,7 @@ var callUri = function() {
         'uri': 'http://www.wgzimmer.ch/wgzimmer/search/mate.html?',
         'method': 'POST',
         'timeout': 10000,
-        'form': 'query=&priceMin=500&priceMax=1500&state=zurich-stadt&student=none&country=ch&orderBy=MetaData%2F%40mgnl%3Alastmodified&orderDir=descending&startSearchMate=true&wgStartSearch=true',
+        'form': 'query=&priceMin=700&priceMax=1500&state=zurich-stadt&student=none&country=ch&orderBy=MetaData%2F%40mgnl%3Alastmodified&orderDir=descending&startSearchMate=true&wgStartSearch=true',
         'callback': function(error, result, $) {
             if (error !== null) {
                 console.log(error);

@@ -3,6 +3,7 @@
  * a crawler for the incredibly shitty wgzimmer.ch website
  * regularly visits wgzimmer.ch and fetches all the new (!) ads that conform to user-adjustable criteria
  * then sends out an email with the new entries to
+ * no license!
  */
 var Crawler = require('crawler').Crawler;
 var Moment = require('moment');

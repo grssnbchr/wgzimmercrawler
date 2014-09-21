@@ -37,7 +37,6 @@ var c = new Crawler({
 });
 // define an Email transporter
 var transporter = Email.createTransport({
-    // service: 'yahoo',
     host: emailHost,
     port: emailPort,
     secure: emailSecure,

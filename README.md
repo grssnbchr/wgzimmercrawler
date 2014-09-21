@@ -17,7 +17,7 @@ how to run
 * in order for emailing to work, you need to add configuration variables in your environment (often, .bashrc), but you
 * can also add the email addresses and passwords directly in crawl.js 
 * if you plan to host the project on heroku (which is recommended because it only needs one worker - one is free - and then runs
-* all the time, 24/7, which lets you react quickly to new flats), they have a very good node introduction on https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction
+all the time, 24/7, which lets you react quickly to new flats), they have a very good node introduction on https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction
 * here, the Procfile is already ready & set
 * so, to run locally, just do this: `node crawl.js`
 * flats.json will be populated so that flats which you already have been notified about are not sent to you twice

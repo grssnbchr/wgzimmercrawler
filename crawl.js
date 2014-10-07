@@ -11,6 +11,8 @@ var _ = require('underscore');
 var Email = require('nodemailer');
 var fs = require('fs');
 var async = require('async');
+var Emitter = require('events').EventEmitter;
+var emitter = new Emitter();
 Moment().format();
 
 // configurations
@@ -51,16 +53,39 @@ if (!String.prototype.contains) {
         return String.prototype.indexOf.apply(this, arguments) !== -1;
     };
 }
+
 var dateParser = function(inputDate) {
     return Moment(inputDate, 'DD.MM.YYYY');
 };
-var list = JSON.parse(fs.readFileSync('flats.json', {
-    encoding: 'utf8'
-}));
-
-
-
+// helper variable
 var i = 0;
+var list = null;
+// as soon as flats.json is ready and parsed, make a call to wgzimmer.ch
+emitter.on('ready', function() {
+    fs.readFile('flats.json', {
+        encoding: 'utf8'
+    }, function(err, file) {
+        if (err) throw err;
+        list = JSON.parse(file);
+        callUri();
+        setInterval(callUri, interval * 60 * 1000);
+    });
+
+});
+
+// start with logic
+// make flats.json if it doesn't exit yet
+fs.exists('flats.json', function(exists) {
+    if (!exists) {
+        fs.writeFile('flats.json', JSON.stringify([]), function(err) {
+            if (err) throw err;
+            console.log('created new flats.json');
+            emitter.emit('ready');
+        });
+    } else {
+        emitter.emit('ready');
+    }
+});
 
 // read list from file
 var onMailSendComplete = function(err) {
@@ -174,5 +199,3 @@ var callUri = function() {
         }
     }]);
 };
-callUri();
-setInterval(callUri, interval * 60 * 1000);

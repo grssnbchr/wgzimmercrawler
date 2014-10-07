@@ -14,8 +14,7 @@ how to install
 how to run
 -----------------------------
 * fire up your favourite editor and modify lines 17 to 31 in crawl.js to suit your needs
-* in order for emailing to work, you need to add configuration variables in your environment (often, .bashrc), but you
-* can also add the email addresses and passwords directly in crawl.js 
+* in order for emailing to work, you need to add configuration variables in your environment (often, .bashrc), but you can also add the email addresses and passwords directly in crawl.js 
 * if you plan to host the project on heroku (which is recommended because it only needs one worker - one is free - and then runs
 all the time, 24/7, which lets you react quickly to new flats), they have a very good node introduction on https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction
 * here, the Procfile is already ready & set
